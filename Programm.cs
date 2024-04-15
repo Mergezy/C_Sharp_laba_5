@@ -1,0 +1,99 @@
+using System;
+
+namespace ConsoleApp
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Dog dog = new Dog("Кость", "У дома", "Овчарка");
+            Cat cat = new Cat("Рыба", "Дом", "Сиамская");
+            Horse horse = new Horse("Сено", "Стойло", "Андалузская");
+
+            Veterinarian veterinarian = new Veterinarian();
+
+            veterinarian.TreatAnimal(dog);
+            veterinarian.TreatAnimal(cat);
+            veterinarian.TreatAnimal(horse);
+        }
+    }
+    public abstract class Animal
+    {
+        public string Food { get; set; }
+        public string Location { get; set; }
+        public string Breed { get; set; }
+
+        public Animal(string food, string location, string breed)
+        {
+            Food = food;
+            Location = location;
+            Breed = breed;
+        }
+
+        public abstract string MakeNoise();
+        public abstract string Eat();
+        public string Sleep() { return "Спит"; }
+    }
+
+    public class Dog : Animal
+    {
+
+        public Dog(string food, string location, string breed) : base(food, location, breed)
+        {
+        }
+
+        public override string MakeNoise()
+        {
+            return "Собака лает";
+        }
+
+        public override string Eat()
+        {
+            return "Собака ест " + Food;
+        }
+    }
+
+    public class Cat : Animal
+    {
+
+        public Cat(string food, string location, string breed) : base(food, location, breed)
+        {
+        }
+
+        public override string MakeNoise()
+        {
+            return "Кошка мяукает";
+        }
+
+        public override string Eat()
+        {
+            return "Кошка ест " + Food;
+        }
+    }
+
+    public class Horse : Animal
+    {
+
+        public Horse(string food, string location, string breed) : base(food, location, breed)
+        {
+        }
+
+        public override string MakeNoise()
+        {
+            return "Лошадь ржет";
+        }
+
+        public override string Eat()
+        {
+            return "Лошадь ест " + Food;
+        }
+    }
+
+    public class Veterinarian
+    {
+        public void TreatAnimal(Animal animal)
+        {
+            Console.WriteLine($"Еда: {animal.Food}, местоположение: {animal.Location}, порода {animal.Breed}");
+        }
+    }
+}
