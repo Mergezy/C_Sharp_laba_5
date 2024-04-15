@@ -32,7 +32,7 @@ namespace ConsoleApp
 
         public abstract string MakeNoise();
         public abstract string Eat();
-        public string Sleep() { return "Спит"; }
+        public abstract string Sleep();
     }
 
     public class Dog : Animal
@@ -50,6 +50,10 @@ namespace ConsoleApp
         public override string Eat()
         {
             return "Собака ест " + Food;
+        }
+        public override string Sleep()
+        {
+            return "Собака спит";
         }
     }
 
@@ -69,6 +73,10 @@ namespace ConsoleApp
         {
             return "Кошка ест " + Food;
         }
+        public override string Sleep()
+        {
+            return "Кошка спит";
+        }
     }
 
     public class Horse : Animal
@@ -86,6 +94,10 @@ namespace ConsoleApp
         public override string Eat()
         {
             return "Лошадь ест " + Food;
+        }
+        public override string Sleep()
+        {
+            return "Лошадь спит";
         }
     }
 
